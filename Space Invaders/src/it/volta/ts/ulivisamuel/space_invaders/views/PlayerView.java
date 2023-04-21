@@ -3,14 +3,14 @@ package it.volta.ts.ulivisamuel.space_invaders.views;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import it.volta.ts.ulivisamuel.space_invaders.bean.Player;
+import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 @SuppressWarnings("serial")
 public class PlayerView extends JLabel implements ModifiedPlayer
 {
-	private Player player;
+	private Entity player;
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -28,5 +28,4 @@ public class PlayerView extends JLabel implements ModifiedPlayer
 	{
 		this.setLocation(player.getxPosition(), 0);
 	}
-	
 }

@@ -6,14 +6,14 @@ import java.util.List;
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
-public class Player
+public class Entity
 {
 	private int                  xPosition;
 	private List<ModifiedPlayer> listeners;
 	
 	//---------------------------------------------------------------------------------------------
 	
-	public Player()
+	public Entity()
 	{
 		xPosition      = 0;
 		listeners      = new ArrayList<ModifiedPlayer>();

@@ -42,7 +42,9 @@ public class MainView extends JFrame
 		mainPanel = new JPanel();
 		mainPanel.setBounds(0, 0, this.getWidth(), this.getHeight());
 		mainPanel.setLayout(new BorderLayout());
+		formatHeadrPanel();
 		formatFooterPanel();
+		mainPanel.add(headerPanel, BorderLayout.NORTH);
 		mainPanel.add(footerPanel, BorderLayout.SOUTH);
 	}
 	
@@ -50,7 +52,9 @@ public class MainView extends JFrame
 	
 	private void formatHeadrPanel()
 	{
-		
+		headerPanel = new JPanel();
+		headerPanel.setLayout(new BorderLayout());
+		headerPanel.add(new AlienView(), BorderLayout.CENTER);
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -66,7 +70,6 @@ public class MainView extends JFrame
 	{
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
-		playerView = new PlayerView();
-		footerPanel.add(playerView, BorderLayout.CENTER);
+		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
 	}
 }

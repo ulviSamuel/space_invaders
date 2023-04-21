@@ -1,16 +1,18 @@
 package it.volta.ts.ulivisamuel.space_invaders.main;
 
-import it.volta.ts.ulivisamuel.space_invaders.bean.Player;
+import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
 import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
 
 public class Config 
 {
 	private static final Config        istance       = new Config();
-	private              Player        player        = new Player();
+	private              Entity        player        = new Entity();
+	private              Entity        alien         = new Entity();
 	private              PlayerManager playerManager = null;
 	private              int           frameWidth    = 0;
 	private              int           oldFrameWidth = 0;
 	private              int           playerSpeed   = 10;
+	private              int           alienSpeed    = 10;
 	
 	//---------------------------------------------------------------------------------------------
 
@@ -25,7 +27,7 @@ public class Config
 	
 	//---------------------------------------------------------------------------------------------
 
-	public Player getPlayer() 
+	public Entity getPlayer() 
 	{
 		return player;
 	}
@@ -51,10 +53,20 @@ public class Config
 			playerManager = new PlayerManager();
 		return playerManager;
 	}
+	
+	public Entity getAlien() 
+	{
+		return alien;
+	}
+	
+	public int getAlienSpeed() 
+	{
+		return alienSpeed;
+	}
 
 	
 	
-	public void setPlayer(Player player) 
+	public void setPlayer(Entity player) 
 	{
 		this.player = player;
 	}
@@ -82,5 +94,15 @@ public class Config
 	public void setPlayerManager(PlayerManager playerManager) 
 	{
 		this.playerManager = playerManager;
+	}
+
+	public void setAlien(Entity alien) 
+	{
+		this.alien = alien;
+	}
+
+	public void setAlienSpeed(int alienSpeed)
+	{
+		this.alienSpeed = alienSpeed;
 	}
 }

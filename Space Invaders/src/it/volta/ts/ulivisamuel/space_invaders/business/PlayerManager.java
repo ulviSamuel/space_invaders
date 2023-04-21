@@ -1,12 +1,12 @@
 package it.volta.ts.ulivisamuel.space_invaders.business;
 
-import it.volta.ts.ulivisamuel.space_invaders.bean.Player;
-import it.volta.ts.ulivisamuel.space_invaders.interfaces.MoveObject;
+import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
+import it.volta.ts.ulivisamuel.space_invaders.interfaces.MoveEntity;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
-public class PlayerManager implements MoveObject
+public class PlayerManager implements MoveEntity
 {
-	private Player player;
+	private Entity player;
 	private Config configInstance;
 	
 	//---------------------------------------------------------------------------------------------
@@ -50,6 +50,10 @@ public class PlayerManager implements MoveObject
 	@Override
 	public void resetPlayerPosition()
 	{
-		player.setxPosition((player.getxPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+		try
+		{
+			player.setxPosition((player.getxPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+		}
+		catch(java.lang.ArithmeticException e){}
 	}
 }

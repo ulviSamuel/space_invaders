@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
-import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 public class Entity
 {

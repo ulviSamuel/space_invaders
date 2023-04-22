@@ -9,12 +9,18 @@ import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 public class KeyboardListener extends KeyAdapter implements KeyListener
 {
 	private PlayerManager playerManager;
+	private AlienManager  alienManager;
+	private Config        configInstance;
+	private boolean       gameStarted;
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public KeyboardListener()
 	{
-		playerManager = Config.getInstance().getPlayerManager();
+		configInstance = Config.getInstance();
+		playerManager  = configInstance.getPlayerManager();
+		alienManager   = configInstance.getAlienManager();
+		gameStarted    = false;
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -22,6 +28,8 @@ public class KeyboardListener extends KeyAdapter implements KeyListener
 	@Override
 	public void keyPressed(KeyEvent e)
 	{
+		if(!gameStarted)
+			startAndStopAlien();
 		switch(e.getKeyCode())
 		{
 		case 37:
@@ -33,5 +41,17 @@ public class KeyboardListener extends KeyAdapter implements KeyListener
 			playerManager.onRightMove();
 			break;
 		}
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void startAndStopAlien()
+	{
+		if(alienManager != null)
+			alienManager.interrompiThread();
+		configInstance.setAlienManager(new AlienManager());
+		alienManager = configInstance.getAlienManager();
+		alienManager.start();
+		gameStarted = true;
 	}
 }

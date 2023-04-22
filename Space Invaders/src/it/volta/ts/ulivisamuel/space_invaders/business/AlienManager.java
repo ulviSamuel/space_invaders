@@ -18,25 +18,51 @@ public class AlienManager extends Thread implements MoveEntity
 		configInstance = Config.getInstance();
 		alien          = configInstance.getAlien();
 		phaseNumber    = 0;
-		gameFinished   = true;
+		gameFinished   = false;
+	}
+
+	//---------------------------------------------------------------------------------------------
+	
+	public void interrompiThread()
+	{
+		gameFinished = true;
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public void run()
 	{
-		while(!gameFinished)
-			moveAlien();
+		moveAlien();
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
 	private void moveAlien()
 	{
-		if(phaseNumber == 1)
-			onLeftMove();
-		else
-			onRightMove();
+		while(!gameFinished)
+		{
+			if(phaseNumber == 1)
+				onLeftMove();
+			else
+				onRightMove();
+			pause(configInstance.getTimeBfMoveUfo());
+		}
+		this.interrupt();
+	}
+
+	//---------------------------------------------------------------------------------------------
+	
+	private void pause(long time)
+	{
+		try 
+		{
+			Thread.sleep(time);
+		} 
+		catch (InterruptedException e) 
+		{
+			Thread.currentThread().interrupt();
+            return;
+		}
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -44,7 +70,10 @@ public class AlienManager extends Thread implements MoveEntity
 	@Override
 	public void onRightMove()
 	{
-		alien.setxPosition(alien.getxPosition() + configInstance.getAlienSpeed());
+		if(alien.getxPosition() < (configInstance.getFrameWidth() / 2) - 40)
+			alien.setxPosition(alien.getxPosition() + configInstance.getAlienSpeed());
+		else
+			phaseNumber = 1;
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -52,7 +81,10 @@ public class AlienManager extends Thread implements MoveEntity
 	@Override
 	public void onLeftMove() 
 	{
-		alien.setxPosition(alien.getxPosition() - configInstance.getAlienSpeed());
+		if(alien.getxPosition() > (-configInstance.getFrameWidth() / 2) + 40)
+			alien.setxPosition(alien.getxPosition() - configInstance.getAlienSpeed());
+		else
+			phaseNumber = 0;
 	}
 	
 	//---------------------------------------------------------------------------------------------

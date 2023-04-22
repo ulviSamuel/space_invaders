@@ -10,6 +10,7 @@ public class FrameResizedManager extends ComponentAdapter implements ComponentLi
 {
 	private Config        configInstance;
 	private PlayerManager playerManager;
+	private AlienManager  alienManager;
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -17,6 +18,7 @@ public class FrameResizedManager extends ComponentAdapter implements ComponentLi
 	{
 		configInstance = Config.getInstance();
 		playerManager  = configInstance.getPlayerManager();
+		alienManager   = configInstance.getAlienManager();
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -27,5 +29,6 @@ public class FrameResizedManager extends ComponentAdapter implements ComponentLi
 		configInstance.setOldFrameWidth(configInstance.getFrameWidth());
     	configInstance.setFrameWidth(e.getComponent().getWidth());
     	playerManager.resetPlayerPosition();
+    	alienManager.resetPlayerPosition();
 	}
 }

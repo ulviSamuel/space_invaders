@@ -24,8 +24,8 @@ public class PlayerManager implements MoveEntity
 	{
 		if(player.getxPosition() != configInstance.getFrameWidth()/2)
 		{
-			if(player.getxPosition() > configInstance.getFrameWidth()/2 - 40)
-				player.setxPosition(player.getxPosition() + (configInstance.getFrameWidth()/2 - player.getxPosition())- 30);
+			if(player.getxPosition() > configInstance.getFrameWidth()/2 - configInstance.getDistFromEdge())
+				player.setxPosition(player.getxPosition() + (configInstance.getFrameWidth()/2 - player.getxPosition())- configInstance.getDistFrEdPlayer());
 			else
 				player.setxPosition(player.getxPosition() + configInstance.getPlayerSpeed());
 		}
@@ -38,8 +38,8 @@ public class PlayerManager implements MoveEntity
 	{
 		if(player.getxPosition() != (-configInstance.getFrameWidth()/2))
 		{
-			if(player.getxPosition() < -configInstance.getFrameWidth()/2 + 40)
-				player.setxPosition((player.getxPosition() + (-configInstance.getFrameWidth()/2 - player.getxPosition())) + 30);
+			if(player.getxPosition() < -configInstance.getFrameWidth()/2 + configInstance.getDistFromEdge())
+				player.setxPosition((player.getxPosition() + (-configInstance.getFrameWidth()/2 - player.getxPosition())) + configInstance.getDistFrEdPlayer());
 			else
 				player.setxPosition(player.getxPosition() - configInstance.getPlayerSpeed());
 		}

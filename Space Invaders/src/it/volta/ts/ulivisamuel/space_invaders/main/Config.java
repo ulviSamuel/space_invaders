@@ -6,16 +6,18 @@ import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
 
 public class Config 
 {
-	private static final Config        istance       = new Config();
-	private              Entity        player        = new Entity();
-	private              Entity        alien         = new Entity();
-	private              PlayerManager playerManager = null;
-	private              AlienManager  alienManager  = null;
-	private              int           frameWidth    = 0;
-	private              int           oldFrameWidth = 0;
-	private              int           playerSpeed   = 10;
-	private              int           alienSpeed    = 10;
-	private              long          timeBfMoveUfo = 100;
+	private static final Config        istance        = new Config();
+	private              Entity        player         = new Entity();
+	private              Entity        alien          = new Entity();
+	private              PlayerManager playerManager  = null;
+	private              AlienManager  alienManager   = null;
+	private              int           frameWidth     = 0;
+	private              int           oldFrameWidth  = 0;
+	private              int           playerSpeed    = 10;
+	private              int           alienSpeed     = 10;
+	private              int           distFromEdge   = 40;
+	private              int           distFrEdPlayer = 30;
+	private              long          timeBfMoveUfo  = 100;
 	
 	//---------------------------------------------------------------------------------------------
 
@@ -78,6 +80,16 @@ public class Config
 			alienManager = new AlienManager();
 		return alienManager;
 	}
+	
+	public int getDistFromEdge() 
+	{
+		return distFromEdge;
+	}
+	
+	public int getDistFrEdPlayer()
+	{
+		return distFrEdPlayer;
+	}
 
 	
 	
@@ -129,5 +141,15 @@ public class Config
 	public void setAlienManager(AlienManager alienManager) 
 	{
 		this.alienManager = alienManager;
+	}
+
+	public void setDistFromEdge(int distFromEdge) 
+	{
+		this.distFromEdge = distFromEdge;
+	}
+
+	public void setDistFrEdPlayer(int distFrEdPlayer) 
+	{
+		this.distFrEdPlayer = distFrEdPlayer;
 	}
 }

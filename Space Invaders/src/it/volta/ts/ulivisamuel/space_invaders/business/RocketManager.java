@@ -29,10 +29,20 @@ public class RocketManager extends Thread
 	
 	public void run()
 	{
+		
 		while(!gameFinished)
 		{
-			
+			onYMove();
+			pause(configInstance.getTimeBfMoveRock());
 		}
+		this.interrupt();
+	}
+	
+	//---------------------------------------------------------------------------------------------
+
+	public void onYMove() 
+	{
+		rocket.setPosition(rocket.getPosition() - configInstance.getRocketSpeed());
 	}
 
 	//---------------------------------------------------------------------------------------------
@@ -52,8 +62,12 @@ public class RocketManager extends Thread
 	
 	//---------------------------------------------------------------------------------------------
 
-	public void onYMove() 
+	public void resetPlayerPosition() 
 	{
-		rocket.setPosition(rocket.getPosition() + configInstance.getAlienSpeed());
+		try
+		{
+			rocket.setPosition((rocket.getPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+		}
+		catch(java.lang.ArithmeticException e){}
 	}
 }

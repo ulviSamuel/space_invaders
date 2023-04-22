@@ -7,13 +7,15 @@ import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 public class ShootButtonListener implements ActionListener 
 {
-	 private Config configIstnace;
+	 private Config        configIstnace;
+	 private RocketManager rocketManager;
 	 
 	 //--------------------------------------------------------------------------------------------
 	 
 	 public ShootButtonListener()
 	 {
 		 configIstnace = Config.getInstance();
+		 rocketManager = configIstnace.getRocketManager();
 	 }
 	
 	//---------------------------------------------------------------------------------------------
@@ -22,6 +24,7 @@ public class ShootButtonListener implements ActionListener
 	public void actionPerformed(ActionEvent e) 
 	{
 		configIstnace.getRocketView().setVisible(true);
+		rocketManager.start();
 		configIstnace.getMainView().requestFocusInWindow();
 	}
 }

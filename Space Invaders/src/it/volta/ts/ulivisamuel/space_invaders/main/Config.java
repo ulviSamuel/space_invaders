@@ -3,6 +3,7 @@ package it.volta.ts.ulivisamuel.space_invaders.main;
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
 import it.volta.ts.ulivisamuel.space_invaders.business.AlienManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
+import it.volta.ts.ulivisamuel.space_invaders.business.RocketManager;
 import it.volta.ts.ulivisamuel.space_invaders.views.MainView;
 import it.volta.ts.ulivisamuel.space_invaders.views.RocketView;
 
@@ -15,14 +16,17 @@ public class Config
 	private              MainView      mainView       = null;
 	private              PlayerManager playerManager  = null;
 	private              AlienManager  alienManager   = null;
+	private              RocketManager rocketManager  = null;
 	private              RocketView    rocketView     = null;
 	private              int           frameWidth     = 0;
 	private              int           oldFrameWidth  = 0;
 	private              int           playerSpeed    = 10;
 	private              int           alienSpeed     = 10;
+	private              int           rocketSpeed    = 20;
 	private              int           distFromEdge   = 40;
 	private              int           distFrEdPlayer = 30;
 	private              long          timeBfMoveUfo  = 100;
+	private              long          timeBfMoveRock = 100;
 	
 	//---------------------------------------------------------------------------------------------
 
@@ -115,6 +119,23 @@ public class Config
 		return rocket;
 	}
 	
+	public int getRocketSpeed()
+	{
+		return rocketSpeed;
+	}
+	
+	public long getTimeBfMoveRock()
+	{
+		return timeBfMoveRock;
+	}
+	
+	public RocketManager getRocketManager() 
+	{
+		if(rocketManager == null)
+			rocketManager = new RocketManager();
+		return rocketManager;
+	}
+	
 	
 	
 	public void setPlayer(Entity player) 
@@ -190,5 +211,20 @@ public class Config
 	public void setRocket(Entity rocket)
 	{
 		this.rocket = rocket;
+	}
+
+	public void setRocketSpeed(int rocketSpeed) 
+	{
+		this.rocketSpeed = rocketSpeed;
+	}
+
+	public void setTimeBfMoveRock(long timeBfMoveRock)
+	{
+		this.timeBfMoveRock = timeBfMoveRock;
+	}
+
+	public void setRocketManager(RocketManager rocketManager) 
+	{
+		this.rocketManager = rocketManager;
 	}
 }

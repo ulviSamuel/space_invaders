@@ -3,14 +3,19 @@ package it.volta.ts.ulivisamuel.space_invaders.main;
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
 import it.volta.ts.ulivisamuel.space_invaders.business.AlienManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
+import it.volta.ts.ulivisamuel.space_invaders.views.MainView;
+import it.volta.ts.ulivisamuel.space_invaders.views.RocketView;
 
 public class Config 
 {
 	private static final Config        istance        = new Config();
 	private              Entity        player         = new Entity();
 	private              Entity        alien          = new Entity();
+	private              Entity        rocket         = new Entity();
+	private              MainView      mainView       = null;
 	private              PlayerManager playerManager  = null;
 	private              AlienManager  alienManager   = null;
+	private              RocketView    rocketView     = null;
 	private              int           frameWidth     = 0;
 	private              int           oldFrameWidth  = 0;
 	private              int           playerSpeed    = 10;
@@ -91,6 +96,25 @@ public class Config
 		return distFrEdPlayer;
 	}
 
+	public MainView getMainView()
+	{
+		if(mainView == null)
+			mainView = new MainView();
+		return mainView;
+	}
+	
+	public RocketView getRocketView()
+	{
+		if(rocketView == null)
+			rocketView = new RocketView();
+		return rocketView;
+	}
+	
+	public Entity getRocket()
+	{
+		return rocket;
+	}
+	
 	
 	
 	public void setPlayer(Entity player) 
@@ -100,7 +124,7 @@ public class Config
 	
 	public void setPlayerXPosition(int xPosition) 
 	{
-		player.setxPosition(xPosition);
+		player.setPosition(xPosition);
 	}
 
 	public void setFrameWidth(int frameWidth) 
@@ -151,5 +175,20 @@ public class Config
 	public void setDistFrEdPlayer(int distFrEdPlayer) 
 	{
 		this.distFrEdPlayer = distFrEdPlayer;
+	}
+
+	public void setMainView(MainView mainView) 
+	{
+		this.mainView = mainView;
+	}
+
+	public void setRocketView(RocketView rocketView) 
+	{
+		this.rocketView = rocketView;
+	}
+
+	public void setRocket(Entity rocket)
+	{
+		this.rocket = rocket;
 	}
 }

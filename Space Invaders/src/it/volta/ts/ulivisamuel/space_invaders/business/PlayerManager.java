@@ -22,12 +22,12 @@ public class PlayerManager implements MoveEntity
 	@Override
 	public void onRightMove()
 	{
-		if(player.getxPosition() != configInstance.getFrameWidth()/2)
+		if(player.getPosition() != configInstance.getFrameWidth()/2)
 		{
-			if(player.getxPosition() > configInstance.getFrameWidth()/2 - configInstance.getDistFromEdge())
-				player.setxPosition(player.getxPosition() + (configInstance.getFrameWidth()/2 - player.getxPosition())- configInstance.getDistFrEdPlayer());
+			if(player.getPosition() > configInstance.getFrameWidth()/2 - configInstance.getDistFromEdge())
+				player.setPosition(player.getPosition() + (configInstance.getFrameWidth()/2 - player.getPosition())- configInstance.getDistFrEdPlayer());
 			else
-				player.setxPosition(player.getxPosition() + configInstance.getPlayerSpeed());
+				player.setPosition(player.getPosition() + configInstance.getPlayerSpeed());
 		}
 	}
 	
@@ -36,12 +36,12 @@ public class PlayerManager implements MoveEntity
 	@Override
 	public void onLeftMove() 
 	{
-		if(player.getxPosition() != (-configInstance.getFrameWidth()/2))
+		if(player.getPosition() != (-configInstance.getFrameWidth()/2))
 		{
-			if(player.getxPosition() < -configInstance.getFrameWidth()/2 + configInstance.getDistFromEdge())
-				player.setxPosition((player.getxPosition() + (-configInstance.getFrameWidth()/2 - player.getxPosition())) + configInstance.getDistFrEdPlayer());
+			if(player.getPosition() < -configInstance.getFrameWidth()/2 + configInstance.getDistFromEdge())
+				player.setPosition((player.getPosition() + (-configInstance.getFrameWidth()/2 - player.getPosition())) + configInstance.getDistFrEdPlayer());
 			else
-				player.setxPosition(player.getxPosition() - configInstance.getPlayerSpeed());
+				player.setPosition(player.getPosition() - configInstance.getPlayerSpeed());
 		}
 	}
 	
@@ -52,7 +52,8 @@ public class PlayerManager implements MoveEntity
 	{
 		try
 		{
-			player.setxPosition((player.getxPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+			int value = (player.getPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth();
+			player.setPosition(value);
 		}
 		catch(java.lang.ArithmeticException e){}
 	}

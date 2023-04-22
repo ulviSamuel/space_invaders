@@ -70,8 +70,8 @@ public class AlienManager extends Thread implements MoveEntity
 	@Override
 	public void onRightMove()
 	{
-		if(alien.getxPosition() < (configInstance.getFrameWidth() / 2) - configInstance.getDistFromEdge())
-			alien.setxPosition(alien.getxPosition() + configInstance.getAlienSpeed());
+		if(alien.getPosition() < (configInstance.getFrameWidth() / 2) - configInstance.getDistFromEdge())
+			alien.setPosition(alien.getPosition() + configInstance.getAlienSpeed());
 		else
 			phaseNumber = 1;
 	}
@@ -81,8 +81,8 @@ public class AlienManager extends Thread implements MoveEntity
 	@Override
 	public void onLeftMove() 
 	{
-		if(alien.getxPosition() > (-configInstance.getFrameWidth() / 2) + configInstance.getDistFromEdge())
-			alien.setxPosition(alien.getxPosition() - configInstance.getAlienSpeed());
+		if(alien.getPosition() > (-configInstance.getFrameWidth() / 2) + configInstance.getDistFromEdge())
+			alien.setPosition(alien.getPosition() - configInstance.getAlienSpeed());
 		else
 			phaseNumber = 0;
 	}
@@ -94,7 +94,7 @@ public class AlienManager extends Thread implements MoveEntity
 	{
 		try
 		{
-			alien.setxPosition((alien.getxPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+			alien.setPosition((alien.getPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
 		}
 		catch(java.lang.ArithmeticException e){}
 	}

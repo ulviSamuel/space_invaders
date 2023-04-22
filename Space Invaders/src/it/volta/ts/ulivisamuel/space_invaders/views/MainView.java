@@ -2,14 +2,14 @@ package it.volta.ts.ulivisamuel.space_invaders.views;
 
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import it.volta.ts.ulivisamuel.space_invaders.business.FrameResizedManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.KeyboardListener;
+import it.volta.ts.ulivisamuel.space_invaders.business.ShootButtonListener;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 @SuppressWarnings("serial")
@@ -17,9 +17,7 @@ public class MainView extends JFrame
 {
 	private JPanel     mainPanel;
 	private JPanel     headerPanel;
-	private JPanel     centerPanel;
 	private JPanel     footerPanel;
-	private PlayerView playerView;
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -59,17 +57,25 @@ public class MainView extends JFrame
 	
 	//---------------------------------------------------------------------------------------------
 	
-	private void formatCenterPanel()
-	{
-		
-	}
-	
-	//---------------------------------------------------------------------------------------------
-	
 	private void formatFooterPanel()
 	{
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
+		RocketView rocketView = Config.getInstance().getRocketView();
+		rocketView.setVisible(false);
+		footerPanel.add(rocketView, BorderLayout.NORTH);
 		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
+		JButton shootButton = new JButton("Spara");
+		shootButton.addActionListener(new ShootButtonListener());
+		footerPanel.add(shootButton, BorderLayout.SOUTH);
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	@Override
+	public void setVisible(boolean b)
+	{
+		super.setVisible(b);
+		this.requestFocusInWindow();
 	}
 }

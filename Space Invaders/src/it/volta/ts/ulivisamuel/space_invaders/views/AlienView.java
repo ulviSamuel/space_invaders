@@ -26,6 +26,6 @@ public class AlienView extends JLabel implements ModifiedPlayer
 	@Override
 	public void onPlayerModifed() 
 	{
-		this.setLocation(alien.getxPosition(), 0);
+		this.setLocation(alien.getPosition(), 0);
 	}
 }

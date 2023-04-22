@@ -7,29 +7,29 @@ import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
 
 public class Entity
 {
-	private int                  xPosition;
+	private int                  position;
 	private List<ModifiedPlayer> listeners;
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public Entity()
 	{
-		xPosition      = 0;
+		position      = 0;
 		listeners      = new ArrayList<ModifiedPlayer>();
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
-	public int getxPosition() 
+	public int getPosition() 
 	{
-		return xPosition;
+		return position;
 	}
 
 	
 	
-	public void setxPosition(int xPosition) 
+	public void setPosition(int xPosition) 
 	{
-		this.xPosition = xPosition;
+		this.position = xPosition;
 		alertListeners();
 	}
 	

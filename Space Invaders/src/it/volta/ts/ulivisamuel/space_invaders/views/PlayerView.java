@@ -26,6 +26,6 @@ public class PlayerView extends JLabel implements ModifiedPlayer
 	@Override
 	public void onPlayerModifed() 
 	{
-		this.setLocation(player.getxPosition(), 0);
+		this.setLocation(player.getPosition(), this.getY());
 	}
 }

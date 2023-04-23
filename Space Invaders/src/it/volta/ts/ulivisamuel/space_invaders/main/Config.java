@@ -1,6 +1,7 @@
 package it.volta.ts.ulivisamuel.space_invaders.main;
 
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
+import it.volta.ts.ulivisamuel.space_invaders.bean.Rocket;
 import it.volta.ts.ulivisamuel.space_invaders.business.AlienManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.RocketManager;
@@ -12,7 +13,7 @@ public class Config
 	private static final Config        istance        = new Config();
 	private              Entity        player         = new Entity();
 	private              Entity        alien          = new Entity();
-	private              Entity        rocket         = new Entity();
+	private              Rocket        rocket         = new Rocket();
 	private              MainView      mainView       = null;
 	private              PlayerManager playerManager  = null;
 	private              AlienManager  alienManager   = null;
@@ -22,7 +23,7 @@ public class Config
 	private              int           oldFrameWidth  = 0;
 	private              int           playerSpeed    = 10;
 	private              int           alienSpeed     = 10;
-	private              int           rocketSpeed    = 20;
+	private              int           rocketSpeed    = 10;
 	private              int           distFromEdge   = 40;
 	private              int           distFrEdPlayer = 30;
 	private              long          timeBfMoveUfo  = 100;
@@ -114,7 +115,7 @@ public class Config
 		return rocketView;
 	}
 	
-	public Entity getRocket()
+	public Rocket getRocket()
 	{
 		return rocket;
 	}
@@ -208,7 +209,7 @@ public class Config
 		this.rocketView = rocketView;
 	}
 
-	public void setRocket(Entity rocket)
+	public void setRocket(Rocket rocket)
 	{
 		this.rocket = rocket;
 	}

@@ -1,11 +1,11 @@
 package it.volta.ts.ulivisamuel.space_invaders.business;
 
-import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
+import it.volta.ts.ulivisamuel.space_invaders.bean.Rocket;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 public class RocketManager extends Thread
 {
-	private Entity  rocket;
+	private Rocket  rocket;
 	private Config  configInstance;
 	private boolean gameFinished;
 
@@ -29,7 +29,7 @@ public class RocketManager extends Thread
 	
 	public void run()
 	{
-		
+		rocket.setxPosition(configInstance.getPlayer().getPosition());
 		while(!gameFinished)
 		{
 			onYMove();
@@ -42,7 +42,7 @@ public class RocketManager extends Thread
 
 	public void onYMove() 
 	{
-		rocket.setPosition(rocket.getPosition() - configInstance.getRocketSpeed());
+		rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
 	}
 
 	//---------------------------------------------------------------------------------------------
@@ -66,7 +66,7 @@ public class RocketManager extends Thread
 	{
 		try
 		{
-			rocket.setPosition((rocket.getPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+			rocket.setyPosition((rocket.getyPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
 		}
 		catch(java.lang.ArithmeticException e){}
 	}

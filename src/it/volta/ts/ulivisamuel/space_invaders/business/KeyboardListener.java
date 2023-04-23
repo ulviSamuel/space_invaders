@@ -29,7 +29,10 @@ public class KeyboardListener extends KeyAdapter implements KeyListener
 	public void keyPressed(KeyEvent e)
 	{
 		if(!gameStarted)
+		{
 			startAndStopAlien();
+			setShootListener();
+		}
 		switch(e.getKeyCode())
 		{
 		case 37:
@@ -53,5 +56,12 @@ public class KeyboardListener extends KeyAdapter implements KeyListener
 		alienManager = configInstance.getAlienManager();
 		alienManager.start();
 		gameStarted = true;
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void setShootListener()
+	{
+		configInstance.getShootButton().addActionListener(new ShootButtonListener());
 	}
 }

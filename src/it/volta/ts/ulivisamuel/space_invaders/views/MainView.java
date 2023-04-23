@@ -79,8 +79,7 @@ public class MainView extends JFrame
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
 		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
-		JButton shootButton = new JButton("Spara");
-		shootButton.addActionListener(new ShootButtonListener());
+		JButton shootButton = Config.getInstance().getShootButton();
 		footerPanel.add(shootButton, BorderLayout.SOUTH);
 	}
 	

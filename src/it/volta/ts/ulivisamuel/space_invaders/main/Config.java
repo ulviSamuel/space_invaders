@@ -1,5 +1,7 @@
 package it.volta.ts.ulivisamuel.space_invaders.main;
 
+import javax.swing.JButton;
+
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
 import it.volta.ts.ulivisamuel.space_invaders.bean.Rocket;
 import it.volta.ts.ulivisamuel.space_invaders.business.AlienManager;
@@ -19,13 +21,17 @@ public class Config
 	private              AlienManager  alienManager   = null;
 	private              RocketManager rocketManager  = null;
 	private              RocketView    rocketView     = null;
+	private              JButton       shootButton    = new JButton("Spara");
 	private              int           frameWidth     = 0;
+	private              int           frameHeight    = 0;
 	private              int           oldFrameWidth  = 0;
+	private              int           oldFrameHeight = 0;
 	private              int           playerSpeed    = 10;
 	private              int           alienSpeed     = 10;
-	private              int           rocketSpeed    = 10;
+	private              int           rocketSpeed    = 20;
 	private              int           distFromEdge   = 40;
 	private              int           distFrEdPlayer = 30;
+	private              int           distFrEdgRock  = 210;
 	private              long          timeBfMoveUfo  = 100;
 	private              long          timeBfMoveRock = 100;
 	
@@ -137,6 +143,26 @@ public class Config
 		return rocketManager;
 	}
 	
+	public int getFrameHeight() 
+	{
+		return frameHeight;
+	}
+	
+	public int getOldFrameHeight() 
+	{
+		return oldFrameHeight;
+	}
+	
+	public int getDistFrEdgRock() 
+	{
+		return distFrEdgRock;
+	}
+	
+	public JButton getShootButton()
+	{
+		return shootButton;
+	}
+	
 	
 	
 	public void setPlayer(Entity player) 
@@ -227,5 +253,25 @@ public class Config
 	public void setRocketManager(RocketManager rocketManager) 
 	{
 		this.rocketManager = rocketManager;
+	}
+
+	public void setFrameHeight(int frameHeight)
+	{
+		this.frameHeight = frameHeight;
+	}
+
+	public void setOldFrameHeight(int oldFrameHeight)
+	{
+		this.oldFrameHeight = oldFrameHeight;
+	}
+
+	public void setDistFrEdgRock(int distFrEdgRock) 
+	{
+		this.distFrEdgRock = distFrEdgRock;
+	}
+
+	public void setShootButton(JButton shootButton)
+	{
+		this.shootButton = shootButton;
 	}
 }

@@ -7,7 +7,7 @@ public class RocketManager extends Thread
 {
 	private Rocket  rocket;
 	private Config  configInstance;
-	private boolean gameFinished;
+	private boolean rocketExploded;
 
 	//---------------------------------------------------------------------------------------------
 	
@@ -15,14 +15,14 @@ public class RocketManager extends Thread
 	{
 		configInstance = Config.getInstance();
 		rocket         = configInstance.getRocket();
-		gameFinished   = false;
+		rocketExploded   = false;
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public void interrompiThread()
 	{
-		gameFinished = true;
+		rocketExploded = true;
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@ public class RocketManager extends Thread
 	public void run()
 	{
 		rocket.setxPosition(configInstance.getPlayer().getPosition());
-		while(!gameFinished)
+		while(!rocketExploded)
 		{
 			onYMove();
 			pause(configInstance.getTimeBfMoveRock());
@@ -40,9 +40,12 @@ public class RocketManager extends Thread
 	
 	//---------------------------------------------------------------------------------------------
 
-	public void onYMove() 
+	private void onYMove()
 	{
-		rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
+		if(rocket.getyPosition() > -configInstance.getFrameHeight() + 210)
+			rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
+		else
+			rocketExploded = true;
 	}
 
 	//---------------------------------------------------------------------------------------------
@@ -66,7 +69,8 @@ public class RocketManager extends Thread
 	{
 		try
 		{
-			rocket.setyPosition((rocket.getyPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+			rocket.setxPosition((rocket.getxPosition() * configInstance.getFrameWidth()) / configInstance.getOldFrameWidth());
+			rocket.setyPosition((rocket.getyPosition() * configInstance.getFrameHeight()) / configInstance.getOldFrameHeight());
 		}
 		catch(java.lang.ArithmeticException e){}
 	}

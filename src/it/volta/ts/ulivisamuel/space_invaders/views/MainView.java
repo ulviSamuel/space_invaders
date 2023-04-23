@@ -80,7 +80,15 @@ public class MainView extends JFrame
 		footerPanel.setLayout(new BorderLayout());
 		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
 		JButton shootButton = Config.getInstance().getShootButton();
+		shootButton.addActionListener(e -> nullListener());
 		footerPanel.add(shootButton, BorderLayout.SOUTH);
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void nullListener()
+	{
+		this.requestFocusInWindow();
 	}
 	
 	//---------------------------------------------------------------------------------------------

@@ -34,6 +34,7 @@ public class FrameResizedManager extends ComponentAdapter implements ComponentLi
     	configInstance.setFrameHeight(e.getComponent().getHeight());
     	playerManager.resetPlayerPosition();
     	alienManager.resetPlayerPosition();
+    	rocketManager  = configInstance.getRocketManager();
     	rocketManager.resetPlayerPosition();
 	}
 }

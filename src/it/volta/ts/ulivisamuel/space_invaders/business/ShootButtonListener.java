@@ -23,8 +23,13 @@ public class ShootButtonListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
-		configIstnace.getRocketView().setVisible(true);
-		rocketManager.start();
-		configIstnace.getMainView().requestFocusInWindow();
+		if(rocketManager.isInterrupted() || !rocketManager.isAlive())
+		{
+			configIstnace.setRocketManager(new RocketManager());
+			configIstnace.getRocketView().setVisible(true);
+			rocketManager = configIstnace.getRocketManager();
+			rocketManager.start();
+			configIstnace.getMainView().requestFocusInWindow();
+		}
 	}
 }

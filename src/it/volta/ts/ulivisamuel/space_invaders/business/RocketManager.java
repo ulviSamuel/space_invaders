@@ -7,7 +7,6 @@ public class RocketManager extends Thread
 {
 	private Rocket  rocket;
 	private Config  configInstance;
-	private boolean rocketExploded;
 
 	//---------------------------------------------------------------------------------------------
 	
@@ -15,14 +14,9 @@ public class RocketManager extends Thread
 	{
 		configInstance = Config.getInstance();
 		rocket         = configInstance.getRocket();
-		rocketExploded   = false;
-	}
-	
-	//---------------------------------------------------------------------------------------------
-	
-	public void interrompiThread()
-	{
-		rocketExploded = true;
+		rocket.setxPosition(0);
+		rocket.setyPosition(0);
+		rocket.setRocketExploded(false);
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -30,7 +24,7 @@ public class RocketManager extends Thread
 	public void run()
 	{
 		rocket.setxPosition(configInstance.getPlayer().getPosition());
-		while(!rocketExploded)
+		while(!rocket.isRocketExploded())
 		{
 			onYMove();
 			pause(configInstance.getTimeBfMoveRock());
@@ -45,7 +39,7 @@ public class RocketManager extends Thread
 		if(rocket.getyPosition() > -configInstance.getFrameHeight() + 210)
 			rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
 		else
-			rocketExploded = true;
+			rocket.setRocketExploded(true);
 	}
 
 	//---------------------------------------------------------------------------------------------

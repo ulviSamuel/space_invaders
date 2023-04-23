@@ -4,11 +4,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
-import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
+import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedRocket;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 @SuppressWarnings("serial")
-public class PlayerView extends JLabel implements ModifiedPlayer
+public class PlayerView extends JLabel implements ModifiedRocket
 {
 	private Entity player;
 	private Config configInstance;
@@ -31,4 +31,9 @@ public class PlayerView extends JLabel implements ModifiedPlayer
 	{
 		this.setLocation(player.getPosition(), this.getY());
 	}
+	
+	//---------------------------------------------------------------------------------------------
+
+	@Override
+	public void rocketExploded() {}
 }

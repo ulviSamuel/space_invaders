@@ -5,10 +5,11 @@ import javax.swing.JLabel;
 
 import it.volta.ts.ulivisamuel.space_invaders.bean.Rocket;
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
+import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedRocket;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 @SuppressWarnings("serial")
-public class RocketView extends JLabel implements ModifiedPlayer
+public class RocketView extends JLabel implements ModifiedRocket
 {
 	private Rocket rocket;
 	
@@ -27,5 +28,13 @@ public class RocketView extends JLabel implements ModifiedPlayer
 	public void onPlayerModifed()
 	{
 		this.setLocation(rocket.getxPosition(), rocket.getyPosition());
+	}
+	
+	//---------------------------------------------------------------------------------------------
+
+	@Override
+	public void rocketExploded()
+	{
+		this.setVisible(false);
 	}
 }

@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
+import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedRocket;
 
 public class Rocket
 {
 	private int                  yPosition;
 	private int                  xPosition;
 	private boolean              rocketExploded;
-	private List<ModifiedPlayer> listeners;
+	private List<ModifiedRocket> listeners;
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -19,7 +20,7 @@ public class Rocket
 		yPosition      = 0;
 		xPosition      = 0;
 		setRocketExploded(false);
-		listeners      = new ArrayList<ModifiedPlayer>();
+		listeners      = new ArrayList<ModifiedRocket>();
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -55,16 +56,18 @@ public class Rocket
 	public void setRocketExploded(boolean rocketExploded)
 	{
 		this.rocketExploded = rocketExploded;
+		if(rocketExploded == true)
+			alertListenersExplosion();
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
-	public void addListener(ModifiedPlayer modifiedPlayer)
+	public void addListener(ModifiedRocket modifiedPlayer)
 	{
 		listeners.add(modifiedPlayer);
 	}
 	
-	public void removeListener(ModifiedPlayer modifiedPlayer)
+	public void removeListener(ModifiedRocket modifiedPlayer)
 	{
 		listeners.remove(modifiedPlayer);
 	}
@@ -73,8 +76,16 @@ public class Rocket
 	
 	private void alertListeners()
 	{
-		for(ModifiedPlayer modifiedPlayer : listeners)
+		for(ModifiedRocket modifiedPlayer : listeners)
 			modifiedPlayer.onPlayerModifed();
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void alertListenersExplosion()
+	{
+		for(ModifiedRocket modifiedPlayer : listeners)
+			modifiedPlayer.rocketExploded();
 	}
 }
 

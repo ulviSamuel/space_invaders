@@ -11,16 +11,13 @@ import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 public class PlayerView extends JLabel implements ModifiedPlayer
 {
 	private Entity player;
-	private Config configInstance;
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public PlayerView()
 	{
 		super(new ImageIcon("img\\space_invaders_player.png"));
-		configInstance = Config.getInstance();
-		player = configInstance.getPlayer();
-		configInstance.getRocket().addListener(this);
+		player = Config.getInstance().getPlayer();
 		player.addListener(this);
 	}
 

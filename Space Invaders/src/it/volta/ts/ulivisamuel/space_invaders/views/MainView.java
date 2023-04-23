@@ -1,12 +1,10 @@
 package it.volta.ts.ulivisamuel.space_invaders.views;
 
 import java.awt.BorderLayout;
-import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import it.volta.ts.ulivisamuel.space_invaders.business.FrameResizedManager;
@@ -17,10 +15,9 @@ import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 @SuppressWarnings("serial")
 public class MainView extends JFrame
 {
-	private JPanel mainPanel;
-	private JPanel headerPanel;
-	private JPanel centerPanel;
-	private JPanel footerPanel;
+	private JPanel     mainPanel;
+	private JPanel     headerPanel;
+	private JPanel     footerPanel;
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -31,7 +28,7 @@ public class MainView extends JFrame
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("img\\space_invaders_logo.png"));
 		formatMainPanel();
 		this.add(mainPanel);
-		this.setMinimumSize(new Dimension(600, 500));
+		this.pack();
 		this.addKeyListener(new KeyboardListener());
 		this.addComponentListener(new FrameResizedManager());
 	}
@@ -43,17 +40,15 @@ public class MainView extends JFrame
 		mainPanel = new JPanel();
 		mainPanel.setBounds(0, 0, this.getWidth(), this.getHeight());
 		mainPanel.setLayout(new BorderLayout());
-		formatHeaderPanel();
-		formatCenterPanel();
+		formatHeadrPanel();
 		formatFooterPanel();
 		mainPanel.add(headerPanel, BorderLayout.NORTH);
-		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		mainPanel.add(footerPanel, BorderLayout.SOUTH);
 	}
 	
 	//---------------------------------------------------------------------------------------------
 	
-	private void formatHeaderPanel()
+	private void formatHeadrPanel()
 	{
 		headerPanel = new JPanel();
 		headerPanel.setLayout(new BorderLayout());
@@ -62,22 +57,13 @@ public class MainView extends JFrame
 	
 	//---------------------------------------------------------------------------------------------
 	
-	private void formatCenterPanel()
-	{
-		centerPanel = new JPanel();
-		centerPanel.setLayout(new BorderLayout());
-		RocketView rocketView = Config.getInstance().getRocketView();
-		rocketView.setVerticalAlignment(JLabel.BOTTOM);
-		rocketView.setVisible(false);
-		centerPanel.add(rocketView, BorderLayout.CENTER);
-	}
-	
-	//---------------------------------------------------------------------------------------------
-	
 	private void formatFooterPanel()
 	{
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
+		RocketView rocketView = Config.getInstance().getRocketView();
+		rocketView.setVisible(false);
+		footerPanel.add(rocketView, BorderLayout.NORTH);
 		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
 		JButton shootButton = new JButton("Spara");
 		shootButton.addActionListener(new ShootButtonListener());

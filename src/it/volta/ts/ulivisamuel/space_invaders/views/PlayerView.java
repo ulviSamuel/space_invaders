@@ -19,7 +19,7 @@ public class PlayerView extends JLabel implements ModifiedRocket
 	{
 		super(new ImageIcon("img\\space_invaders_player.png"));
 		configInstance = Config.getInstance();
-		player = configInstance.getPlayer();
+		player         = configInstance.getPlayer();
 		configInstance.getRocket().addListener(this);
 		configInstance.getAlien().addListener(this);
 		player.addListener(this);

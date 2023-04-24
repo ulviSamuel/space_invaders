@@ -36,7 +36,7 @@ public class Config
 	private              int           distFrEdgRock  = 210;
 	private              long          timeBfMoveUfo  = 100;
 	private              long          timeBfMoveRock = 100;
-	private              long          explosionDur   = 2000;
+	private              long          explosionDur   = 200;
 	
 	//---------------------------------------------------------------------------------------------
 

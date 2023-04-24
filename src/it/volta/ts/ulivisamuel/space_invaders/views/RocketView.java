@@ -13,8 +13,8 @@ import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 @SuppressWarnings("serial")
 public class RocketView extends JLabel implements ModifiedRocket
 {
-	private Rocket     rocket;
-	private Config     configInstance;
+	private Rocket rocket;
+	private Config configInstance;
 	
 	//---------------------------------------------------------------------------------------------
 	

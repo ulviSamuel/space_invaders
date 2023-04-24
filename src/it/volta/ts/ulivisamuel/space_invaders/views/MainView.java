@@ -1,10 +1,12 @@
 package it.volta.ts.ulivisamuel.space_invaders.views;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
 import javax.swing.Box;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -61,6 +63,7 @@ public class MainView extends JFrame
 		headerPanel.setLayout(new BorderLayout());
 		headerPanel.add(Box.createVerticalStrut(configInstance.getDistBtwTopUfo()), BorderLayout.NORTH);
 		headerPanel.add(new AlienView(), BorderLayout.CENTER);
+		headerPanel.setBackground(Color.BLUE);
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -73,6 +76,7 @@ public class MainView extends JFrame
 		rocketView.setVerticalAlignment(JLabel.BOTTOM);
 		rocketView.setVisible(false);
 		centerPanel.add(rocketView, BorderLayout.CENTER);
+		centerPanel.setBackground(Color.BLUE);
 	}
 	
 	//---------------------------------------------------------------------------------------------
@@ -92,6 +96,8 @@ public class MainView extends JFrame
 		JPanel panelTemp = new JPanel();
 		panelTemp.add(shootButton);
 		footerPanel.add(panelTemp, BorderLayout.SOUTH);
+		footerPanel.setBackground(Color.BLUE);
+		panelTemp.setBackground(Color.BLUE);
 	}
 	
 	//---------------------------------------------------------------------------------------------

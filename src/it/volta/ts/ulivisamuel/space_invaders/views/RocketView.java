@@ -24,6 +24,7 @@ public class RocketView extends JLabel implements ModifiedRocket
 		configInstance = Config.getInstance();
 		rocket         = configInstance.getRocket();
 		rocket.addListener(this);
+		configInstance.getAlien().addListener(this);
 	}
 	
 	//---------------------------------------------------------------------------------------------

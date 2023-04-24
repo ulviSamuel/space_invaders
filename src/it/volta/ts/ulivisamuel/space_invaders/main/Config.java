@@ -1,5 +1,6 @@
 package it.volta.ts.ulivisamuel.space_invaders.main;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import it.volta.ts.ulivisamuel.space_invaders.bean.Entity;
@@ -23,7 +24,7 @@ public class Config
 	private              RocketManager rocketManager  = null;
 	private              RocketView    rocketView     = null;
 	private              PlayerView    playerView     = null;
-	private              JButton       shootButton    = new JButton("Spara");
+	private              JButton       shootButton    = new JButton(new ImageIcon("img//space_invaders_buttonSkin.png"));
 	private              int           frameWidth     = 0;
 	private              int           frameHeight    = 0;
 	private              int           oldFrameWidth  = 0;
@@ -33,9 +34,9 @@ public class Config
 	private              int           rocketSpeed    = 20;
 	private              int           distFromEdge   = 40;
 	private              int           distFrEdPlayer = 30;
-	private              int           distFrEdgRock  = 250;
+	private              int           distFrEdgRock  = 270;
 	private              int           distAccForCol  = 40;
-	private              int           distBtwBtnPlay = 20;
+	private              int           distBtwBtnPlay = 0;
 	private              int           distBtwTopUfo  = 20;
 	private              int           minFrameWidth  = 600;
 	private              int           minFrameHeight = 500;

@@ -85,7 +85,13 @@ public class MainView extends JFrame
 		footerPanel.add(Box.createVerticalStrut(configInstance.getDistBtwBtnPlay()), BorderLayout.CENTER);
 		JButton shootButton = configInstance.getShootButton();
 		shootButton.addActionListener(e -> nullListener());
-		footerPanel.add(shootButton, BorderLayout.SOUTH);
+		shootButton.setOpaque(false);
+		shootButton.setContentAreaFilled(false);
+		shootButton.setBorderPainted(false);
+		shootButton.setFocusPainted(false);
+		JPanel panelTemp = new JPanel();
+		panelTemp.add(shootButton);
+		footerPanel.add(panelTemp, BorderLayout.SOUTH);
 	}
 	
 	//---------------------------------------------------------------------------------------------

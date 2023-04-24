@@ -1,5 +1,8 @@
 package it.volta.ts.ulivisamuel.space_invaders.views;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -43,5 +46,27 @@ public class AlienView extends JLabel implements ModifiedRocket
 	public void rocketCollided() 
 	{
 		this.setVisible(false);
+		hangOn();
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void hangOn()
+	{
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask()
+		{
+		    public void run() 
+		    {
+		    	restartGame();
+		    }
+		}, 5000);
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void restartGame()
+	{
+		this.setVisible(true);
 	}
 }

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
+import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,17 +21,19 @@ public class MainView extends JFrame
 	private JPanel headerPanel;
 	private JPanel centerPanel;
 	private JPanel footerPanel;
+	private Config configInstance;
 	
 	//---------------------------------------------------------------------------------------------
 	
 	public MainView()
 	{
-		super();
+		super("Space Invaders");
+		configInstance = Config.getInstance();
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage("img\\space_invaders_logo.png"));
 		formatMainPanel();
 		this.add(mainPanel);
-		this.setMinimumSize(new Dimension(600, 500));
+		this.setMinimumSize(new Dimension(configInstance.getMinFrameWidth(), configInstance.getMinFrameHeight()));
 		this.addKeyListener(new KeyboardListener());
 		this.addComponentListener(new FrameResizedManager());
 	}
@@ -56,6 +59,7 @@ public class MainView extends JFrame
 	{
 		headerPanel = new JPanel();
 		headerPanel.setLayout(new BorderLayout());
+		headerPanel.add(Box.createVerticalStrut(configInstance.getDistBtwTopUfo()), BorderLayout.NORTH);
 		headerPanel.add(new AlienView(), BorderLayout.CENTER);
 	}
 	
@@ -65,7 +69,7 @@ public class MainView extends JFrame
 	{
 		centerPanel = new JPanel();
 		centerPanel.setLayout(new BorderLayout());
-		RocketView rocketView = Config.getInstance().getRocketView();
+		RocketView rocketView = configInstance.getRocketView();
 		rocketView.setVerticalAlignment(JLabel.BOTTOM);
 		rocketView.setVisible(false);
 		centerPanel.add(rocketView, BorderLayout.CENTER);
@@ -77,8 +81,9 @@ public class MainView extends JFrame
 	{
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
-		footerPanel.add(Config.getInstance().getPlayerView(), BorderLayout.CENTER);
-		JButton shootButton = Config.getInstance().getShootButton();
+		footerPanel.add(configInstance.getPlayerView(), BorderLayout.NORTH);
+		footerPanel.add(Box.createVerticalStrut(configInstance.getDistBtwBtnPlay()), BorderLayout.CENTER);
+		JButton shootButton = configInstance.getShootButton();
 		shootButton.addActionListener(e -> nullListener());
 		footerPanel.add(shootButton, BorderLayout.SOUTH);
 	}

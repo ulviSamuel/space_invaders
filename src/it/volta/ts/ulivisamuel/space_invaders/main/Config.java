@@ -33,10 +33,16 @@ public class Config
 	private              int           rocketSpeed    = 20;
 	private              int           distFromEdge   = 40;
 	private              int           distFrEdPlayer = 30;
-	private              int           distFrEdgRock  = 210;
+	private              int           distFrEdgRock  = 250;
+	private              int           distAccForCol  = 40;
+	private              int           distBtwBtnPlay = 20;
+	private              int           distBtwTopUfo  = 20;
+	private              int           minFrameWidth  = 600;
+	private              int           minFrameHeight = 500;
 	private              long          timeBfMoveUfo  = 100;
 	private              long          timeBfMoveRock = 100;
 	private              long          explosionDur   = 200;
+	private              long          timeBfRest     = 5000;
 	
 	//---------------------------------------------------------------------------------------------
 
@@ -178,6 +184,36 @@ public class Config
 		return playerView;
 	}
 	
+	public long getTimeBfRest() 
+	{
+		return timeBfRest;
+	}
+	
+	public int getDistAccForCol() 
+	{
+		return distAccForCol;
+	}
+	
+	public int getDistBtwBtnPlay()
+	{
+		return distBtwBtnPlay;
+	}
+	
+	public int getMinFrameHeight() 
+	{
+		return minFrameHeight;
+	}
+
+	public int getMinFrameWidth() 
+	{
+		return minFrameWidth;
+	}
+	
+	public int getDistBtwTopUfo()
+	{
+		return distBtwTopUfo;
+	}
+	
 	
 	
 	public void setPlayer(Entity player) 
@@ -298,5 +334,35 @@ public class Config
 	public void setPlayerView(PlayerView playerView) 
 	{
 		this.playerView = playerView;
+	}
+
+	public void setTimeBfRest(long timeBfRest) 
+	{
+		this.timeBfRest = timeBfRest;
+	}
+
+	public void setDistAccForCol(int distAccForCol) 
+	{
+		this.distAccForCol = distAccForCol;
+	}
+
+	public void setDistBtwBtnPlay(int distBtwBtnPlay) 
+	{
+		this.distBtwBtnPlay = distBtwBtnPlay;
+	}
+
+	public void setMinFrameWidth(int minFrameWidth)
+	{
+		this.minFrameWidth = minFrameWidth;
+	}
+
+	public void setMinFrameHeight(int minFrameHeight) 
+	{
+		this.minFrameHeight = minFrameHeight;
+	}
+
+	public void setDistBtwTopUfo(int distBtwTopUfo) 
+	{
+		this.distBtwTopUfo = distBtwTopUfo;
 	}
 }

@@ -69,5 +69,8 @@ public class RocketView extends JLabel implements ModifiedRocket
 	//---------------------------------------------------------------------------------------------
 	
 	@Override
-	public void rocketCollided() {}
+	public void rocketCollided()
+	{
+		onPlayerModifed();
+	}
 }

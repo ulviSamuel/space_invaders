@@ -36,7 +36,7 @@ public class RocketManager extends Thread
 
 	private void onYMove()
 	{
-		if(rocket.getyPosition() > -configInstance.getFrameHeight() + 210)
+		if(rocket.getyPosition() > -configInstance.getFrameHeight() + configInstance.getDistFrEdgRock())
 			rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
 		else
 		{
@@ -49,7 +49,7 @@ public class RocketManager extends Thread
 	
 	private void detectCollision()
 	{
-		if(Math.abs((configInstance.getAlien().getPosition() - rocket.getxPosition())) < 40)
+		if(Math.abs((configInstance.getAlien().getPosition() - rocket.getxPosition())) < configInstance.getDistAccForCol())
 			rocket.setRocketCollided(true);
 	}
 

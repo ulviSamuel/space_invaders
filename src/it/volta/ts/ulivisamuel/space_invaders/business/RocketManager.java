@@ -39,7 +39,18 @@ public class RocketManager extends Thread
 		if(rocket.getyPosition() > -configInstance.getFrameHeight() + 210)
 			rocket.setyPosition(rocket.getyPosition() - configInstance.getRocketSpeed());
 		else
+		{
 			rocket.setRocketExploded(true);
+			detectCollision();
+		}
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void detectCollision()
+	{
+		if(Math.abs((configInstance.getAlien().getPosition() - rocket.getxPosition())) < 40)
+			rocket.setRocketCollided(true);
 	}
 
 	//---------------------------------------------------------------------------------------------

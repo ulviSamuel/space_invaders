@@ -10,6 +10,7 @@ public class Rocket
 	private int                  yPosition;
 	private int                  xPosition;
 	private boolean              rocketExploded;
+	private boolean              rocketCollided;
 	private List<ModifiedRocket> listeners;
 	
 	//---------------------------------------------------------------------------------------------
@@ -38,6 +39,11 @@ public class Rocket
 	{
 		return rocketExploded;
 	}
+	
+	public boolean isRocketCollided()
+	{
+		return rocketCollided;
+	}
 
 	
 	
@@ -58,6 +64,13 @@ public class Rocket
 		if(rocketExploded == true)
 			alertListenersExplosion();
 	}
+	
+	public void setRocketCollided(boolean rocketCollided) 
+	{
+		this.rocketCollided = rocketCollided;
+		if(rocketCollided == true)
+			alertListenersCollision();
+	}	
 	
 	//---------------------------------------------------------------------------------------------
 	
@@ -85,6 +98,14 @@ public class Rocket
 	{
 		for(ModifiedRocket modifiedPlayer : listeners)
 			modifiedPlayer.rocketExploded();
+	}
+	
+	//---------------------------------------------------------------------------------------------
+	
+	private void alertListenersCollision()
+	{
+		for(ModifiedRocket modifiedPlayer : listeners)
+			modifiedPlayer.rocketCollided();
 	}
 }
 

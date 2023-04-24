@@ -40,4 +40,7 @@ public class PlayerView extends JLabel implements ModifiedRocket
 	{
 		this.setLocation(player.getPosition(), this.getY());
 	}
+
+	@Override
+	public void rocketCollided() {}
 }

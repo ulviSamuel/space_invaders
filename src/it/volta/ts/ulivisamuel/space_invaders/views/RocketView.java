@@ -65,4 +65,9 @@ public class RocketView extends JLabel implements ModifiedRocket
 		this.setVisible(false);
 		this.setIcon(new ImageIcon("img\\space_invaders_rocket.png"));
 	}
+
+	//---------------------------------------------------------------------------------------------
+	
+	@Override
+	public void rocketCollided() {}
 }

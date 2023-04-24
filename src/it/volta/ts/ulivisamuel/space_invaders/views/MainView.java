@@ -11,7 +11,6 @@ import javax.swing.JPanel;
 
 import it.volta.ts.ulivisamuel.space_invaders.business.FrameResizedManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.KeyboardListener;
-import it.volta.ts.ulivisamuel.space_invaders.business.ShootButtonListener;
 import it.volta.ts.ulivisamuel.space_invaders.main.Config;
 
 @SuppressWarnings("serial")
@@ -78,7 +77,7 @@ public class MainView extends JFrame
 	{
 		footerPanel = new JPanel();
 		footerPanel.setLayout(new BorderLayout());
-		footerPanel.add(new PlayerView(), BorderLayout.CENTER);
+		footerPanel.add(Config.getInstance().getPlayerView(), BorderLayout.CENTER);
 		JButton shootButton = Config.getInstance().getShootButton();
 		shootButton.addActionListener(e -> nullListener());
 		footerPanel.add(shootButton, BorderLayout.SOUTH);

@@ -21,6 +21,7 @@ public class PlayerView extends JLabel implements ModifiedRocket
 		configInstance = Config.getInstance();
 		player = configInstance.getPlayer();
 		configInstance.getRocket().addListener(this);
+		configInstance.getAlien().addListener(this);
 		player.addListener(this);
 	}
 
@@ -35,5 +36,8 @@ public class PlayerView extends JLabel implements ModifiedRocket
 	//---------------------------------------------------------------------------------------------
 
 	@Override
-	public void rocketExploded() {}
+	public void rocketExploded() 
+	{
+		this.setLocation(player.getPosition(), this.getY());
+	}
 }

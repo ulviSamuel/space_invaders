@@ -8,6 +8,7 @@ import it.volta.ts.ulivisamuel.space_invaders.business.AlienManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.PlayerManager;
 import it.volta.ts.ulivisamuel.space_invaders.business.RocketManager;
 import it.volta.ts.ulivisamuel.space_invaders.views.MainView;
+import it.volta.ts.ulivisamuel.space_invaders.views.PlayerView;
 import it.volta.ts.ulivisamuel.space_invaders.views.RocketView;
 
 public class Config 
@@ -21,6 +22,7 @@ public class Config
 	private              AlienManager  alienManager   = null;
 	private              RocketManager rocketManager  = null;
 	private              RocketView    rocketView     = null;
+	private              PlayerView    playerView     = null;
 	private              JButton       shootButton    = new JButton("Spara");
 	private              int           frameWidth     = 0;
 	private              int           frameHeight    = 0;
@@ -34,6 +36,7 @@ public class Config
 	private              int           distFrEdgRock  = 210;
 	private              long          timeBfMoveUfo  = 100;
 	private              long          timeBfMoveRock = 100;
+	private              long          explosionDur   = 2000;
 	
 	//---------------------------------------------------------------------------------------------
 
@@ -163,6 +166,18 @@ public class Config
 		return shootButton;
 	}
 	
+	public long getExplosionDur() 
+	{
+		return explosionDur;
+	}
+	
+	public PlayerView getPlayerView()
+	{
+		if(playerView == null)
+			playerView = new PlayerView();
+		return playerView;
+	}
+	
 	
 	
 	public void setPlayer(Entity player) 
@@ -273,5 +288,15 @@ public class Config
 	public void setShootButton(JButton shootButton)
 	{
 		this.shootButton = shootButton;
+	}
+
+	public void setExplosionDur(long explosionDur)
+	{
+		this.explosionDur = explosionDur;
+	}
+
+	public void setPlayerView(PlayerView playerView) 
+	{
+		this.playerView = playerView;
 	}
 }

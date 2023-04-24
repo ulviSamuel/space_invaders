@@ -3,7 +3,6 @@ package it.volta.ts.ulivisamuel.space_invaders.bean;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedPlayer;
 import it.volta.ts.ulivisamuel.space_invaders.interfaces.ModifiedRocket;
 
 public class Rocket
